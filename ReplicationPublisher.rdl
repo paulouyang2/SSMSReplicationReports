@@ -1393,36 +1393,6 @@ where s.program_name like 'Repl-LogReader-_-' + db_name() + '-%'</CommandText>
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="Textbox10">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>(it will run for 1 minute)</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>5.68278in</Top>
-            <Left>2.08335in</Left>
-            <Height>0.25in</Height>
-            <Width>2.43055in</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox34">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -1430,7 +1400,7 @@ where s.program_name like 'Repl-LogReader-_-' + db_name() + '-%'</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>wait stats</Value>
+                    <Value>create XE</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1444,7 +1414,7 @@ where s.program_name like 'Repl-LogReader-_-' + db_name() + '-%'</CommandText>
               <Actions>
                 <Action>
                   <Drillthrough>
-                    <ReportName>ReplicationWaitStats</ReportName>
+                    <ReportName>ReplicationAgentXE</ReportName>
                     <Parameters>
                       <Parameter Name="program_name">
                         <Value>=First(Fields!program_name.Value, "DataSet3")</Value>
@@ -1458,7 +1428,7 @@ where s.program_name like 'Repl-LogReader-_-' + db_name() + '-%'</CommandText>
             <Left>0.76043in</Left>
             <Height>0.25in</Height>
             <Width>1.26736in</Width>
-            <ZIndex>4</ZIndex>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1494,7 +1464,7 @@ where s.program_name like 'Repl-LogReader-_-' + db_name() + '-%'</CommandText>
             <Left>0.00695in</Left>
             <Height>0.25in</Height>
             <Width>7.42778in</Width>
-            <ZIndex>5</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1510,7 +1480,7 @@ where s.program_name like 'Repl-LogReader-_-' + db_name() + '-%'</CommandText>
             <Left>0.00695in</Left>
             <Height>0in</Height>
             <Width>7.42778in</Width>
-            <ZIndex>6</ZIndex>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Color>LightGrey</Color>

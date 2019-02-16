@@ -2837,36 +2837,6 @@ drop table #exp;</CommandText>
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox7">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>(it will run for 1 minute)</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>6.47444in</Top>
-            <Left>2.04862in</Left>
-            <Height>0.25in</Height>
-            <Width>2.43055in</Width>
-            <ZIndex>11</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox33">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -2874,7 +2844,7 @@ drop table #exp;</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>wait stats</Value>
+                    <Value>create XE</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -2888,7 +2858,7 @@ drop table #exp;</CommandText>
               <Actions>
                 <Action>
                   <Drillthrough>
-                    <ReportName>ReplicationWaitStats</ReportName>
+                    <ReportName>ReplicationAgentXE</ReportName>
                     <Parameters>
                       <Parameter Name="program_name">
                         <Value>=First(Fields!program_name.Value, "LogReaderProgramDistributor")</Value>
@@ -2902,42 +2872,12 @@ drop table #exp;</CommandText>
             <Left>0.7257in</Left>
             <Height>0.25in</Height>
             <Width>1.26736in</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
               <BackgroundColor>LightGrey</BackgroundColor>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox8">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>(it will run for 1 minute)</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>6.47444in</Top>
-            <Left>9.61112in</Left>
-            <Height>0.25in</Height>
-            <Width>2.43055in</Width>
-            <ZIndex>13</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2951,7 +2891,7 @@ drop table #exp;</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>wait stats</Value>
+                    <Value>create XE</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -2965,7 +2905,7 @@ drop table #exp;</CommandText>
               <Actions>
                 <Action>
                   <Drillthrough>
-                    <ReportName>ReplicationWaitStats</ReportName>
+                    <ReportName>ReplicationAgentXE</ReportName>
                     <Parameters>
                       <Parameter Name="program_name">
                         <Value>=First(Fields!program_name.Value, "DistributionProgramDistributor")</Value>
@@ -2979,7 +2919,7 @@ drop table #exp;</CommandText>
             <Left>8.2882in</Left>
             <Height>0.25in</Height>
             <Width>1.26736in</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3012,7 +2952,7 @@ drop table #exp;</CommandText>
             <Left>2.05557in</Left>
             <Height>0.25in</Height>
             <Width>12.94166in</Width>
-            <ZIndex>15</ZIndex>
+            <ZIndex>13</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3044,7 +2984,7 @@ drop table #exp;</CommandText>
             <Left>0.00695in</Left>
             <Height>0.25in</Height>
             <Width>2.02084in</Width>
-            <ZIndex>16</ZIndex>
+            <ZIndex>14</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3076,7 +3016,7 @@ drop table #exp;</CommandText>
             <Left>2.04862in</Left>
             <Height>0.25in</Height>
             <Width>12.94861in</Width>
-            <ZIndex>17</ZIndex>
+            <ZIndex>15</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3108,7 +3048,7 @@ drop table #exp;</CommandText>
             <Left>0.00695in</Left>
             <Height>0.25in</Height>
             <Width>2.02084in</Width>
-            <ZIndex>18</ZIndex>
+            <ZIndex>16</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>

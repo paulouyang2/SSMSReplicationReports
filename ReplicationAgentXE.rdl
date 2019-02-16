@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Created for program name:  " + Parameters!program_name.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>0.54042in</Top>
+        <Left>0.00695in</Left>
+        <Height>0.25in</Height>
+        <Width>13.56666in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Title">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Replication Agent Extended Event</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Left>0.00695in</Left>
+        <Height>0.39458in</Height>
+        <Width>14.99028in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>2in</Height>
+    <Style />
+  </Body>
+  <Width>14.99723in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=ServerName;Initial Catalog=DatabaseName</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@program_name">
+            <Value>=Parameters!program_name.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>declare @cmd varchar(4000)
+
+IF exists(SELECT * FROM sys.server_event_sessions WHERE name = 'replication_agent') 
+DROP EVENT SESSION replication_agent ON SERVER; 
+
+SET @cmd = '
+CREATE EVENT SESSION [replication_agent] ON SERVER
+ADD EVENT sqlserver.rpc_completed(
+    ACTION(sqlserver.session_id)
+    WHERE ([sqlserver].[client_app_name] = ''' + @program_name + ''')),
+ADD EVENT sqlserver.sql_batch_completed(
+    ACTION(sqlserver.session_id)
+    WHERE ([sqlserver].[client_app_name] = ''' + @program_name + ''')),
+ADD EVENT sqlos.wait_info( 
+    ACTION(sqlserver.session_id) 
+    WHERE ([sqlserver].[client_app_name] = ''' + @program_name + ''' AND [duration] &gt; 0)), 
+ADD EVENT sqlos.wait_info_external( 
+    ACTION(sqlserver.session_id) 
+    WHERE ([sqlserver].[client_app_name] = ''' + @program_name + ''' AND [duration] &gt; 0)) 
+ADD TARGET package0.asynchronous_file_target  
+    (SET FILENAME = N''C:\temp\replication_agent.xel'',  
+    METADATAFILE = N''C:\temp\replication_agent.xem'', 
+	max_file_size=(1000),max_rollover_files=(1))  
+WITH (TRACK_CAUSALITY=ON); 
+'
+exec (@cmd);</CommandText>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="program_name">
+      <DataType>String</DataType>
+      <Prompt>program_name</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>03b7029e-4912-45b9-ac98-8247ccf0ed31</rd:ReportID>
+</Report>
