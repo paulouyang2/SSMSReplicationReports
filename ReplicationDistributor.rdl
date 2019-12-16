@@ -1197,6 +1197,10 @@ and dh.comments not like '%cmds="0" cmdspersec="0.000000"%'
 group by
 dh.agent_id
 
+select distinct publisher_id, publisher_db
+into #pubs
+from MSpublications p with (nolock)
+
 select 
 '[' + ps.name + ']'
 + '[' + d.publisher_db + ']'
@@ -1212,9 +1216,10 @@ select
 into #results 
 from 
 MSdistribution_agents d with (nolock)
-join MSpublications p with (nolock)
-on p.publication = d.publication
-and p.publisher_db = d.publisher_db
+join #pubs p with (nolock)
+--on p.publication = d.publication
+on p.publisher_db = d.publisher_db
+and p.publisher_id = d.publisher_id
 join sys.servers ps with (nolock)
 on d.publisher_id = ps.server_id
 join sys.servers ss with (nolock)
